@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM docker.io/frolvlad/alpine-oraclejdk8:latest
 RUN mkdir -p /usr/local/ /newrelic
 RUN chmod 777 /newrelic
 ADD newrelic /usr/local/newrelic

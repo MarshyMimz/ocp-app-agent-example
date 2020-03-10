@@ -6,7 +6,7 @@ metadata:
   annotations:
     description: Application template to deploy a generic application
     iconClass: icon-tomcat
-    tags: tomcat,tomcat7,java,jboss,xpaas,
+    tags: tomcat,tomcat8,java,jboss,xpaas,
     version: 0.0.1
   creationTimestamp: null
   name: deployment-template
@@ -29,7 +29,7 @@ objects:
     runPolicy: Serial
     source:
       dockerfile: |
-        FROM registry.access.redhat.com/jboss-webserver-3/webserver30-tomcat7-openshift
+        FROM registry.redhat.io/jboss-webserver-3/webserver31-tomcat8-openshift
         RUN sed -i 's/shared.loader=/shared.loader=\/mnt\/config,\/mnt\/newrelic/' /opt/webserver/conf/catalina.properties
         RUN rm -rf /deployments/*; curl $ARTIFACT_URL --output /deployments/ROOT.war
       type: Dockerfile
@@ -185,7 +185,7 @@ parameters:
 - description: Base Build Image
   name: BASE_IMAGE
   required: true
-  value: jboss-webserver30-tomcat7-openshift  
+  value: jboss-webserver31-tomcat8-openshift  
 - description: Artifact URL
   name: ARTIFACT_URL
   requred: true
